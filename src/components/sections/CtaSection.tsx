@@ -14,7 +14,7 @@ const CtaSection = () => {
           <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
             Build your next trading edge on top of Logx.
           </h2>
-          <p className="mt-4 text-slate-200/90">
+          <p className="mt-4 font-light text-slate-200/90">
             Use it as your command center for research, signal review, and
             portfolio monitoring.
           </p>
@@ -22,7 +22,7 @@ const CtaSection = () => {
 
         <div id="cta" className="flex flex-col gap-3 sm:flex-row lg:flex-col">
           <a
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 font-medium text-slate-950 transition hover:bg-slate-100"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-400 px-6 py-3.5 font-medium text-slate-950 transition hover:bg-emerald-300"
             href="#"
           >
             Request access

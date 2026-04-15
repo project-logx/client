@@ -10,7 +10,7 @@ const NotFoundPage = () => {
         <h1 className="mt-3 text-3xl font-semibold text-white">
           Page not found
         </h1>
-        <p className="mt-4 text-slate-300">
+        <p className="mt-4 font-light text-slate-300">
           The route you requested does not exist in Logx.
         </p>
         <div className="mt-6">

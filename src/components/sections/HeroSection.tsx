@@ -18,7 +18,7 @@ const HeroSection = () => {
           </span>
         </h1>
 
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
+        <p className="mt-6 max-w-2xl text-lg font-light leading-8 text-slate-300 sm:text-xl">
           Logx is a trading and analysis platform for founders, traders, and
           research teams who want sharper signals, cleaner dashboards, and
           faster decisions across every market they track.
@@ -49,7 +49,9 @@ const HeroSection = () => {
               <div className="text-3xl font-semibold text-white">
                 {metric.value}
               </div>
-              <div className="mt-1 text-sm text-slate-400">{metric.label}</div>
+              <div className="mt-1 text-sm font-light text-slate-400">
+                {metric.label}
+              </div>
             </div>
           ))}
         </div>
@@ -74,7 +76,9 @@ const HeroSection = () => {
         <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/60 p-5 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-6">
           <div className="flex items-center justify-between border-b border-white/10 pb-4">
             <div>
-              <div className="text-sm text-slate-400">Live market snapshot</div>
+              <div className="text-sm font-light text-slate-400">
+                Live market snapshot
+              </div>
               <div className="text-xl font-semibold text-white">Logx Pulse</div>
             </div>
             <div className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-300">
@@ -100,7 +104,7 @@ const HeroSection = () => {
                   ),
                 )}
               </div>
-              <div className="mt-4 text-sm text-slate-400">
+              <div className="mt-4 text-sm font-light text-slate-400">
                 Signal strength rising across momentum and volume clusters.
               </div>
             </div>
@@ -112,7 +116,9 @@ const HeroSection = () => {
                     <BrainCircuit className="h-5 w-5" />
                   </div>
                   <div>
-                    <div className="text-sm text-slate-400">Analyzer mode</div>
+                    <div className="text-sm font-light text-slate-400">
+                      Analyzer mode
+                    </div>
                     <div className="font-medium text-white">
                       Multi-factor scoring
                     </div>
@@ -126,7 +132,9 @@ const HeroSection = () => {
                     <ShieldCheck className="h-5 w-5" />
                   </div>
                   <div>
-                    <div className="text-sm text-slate-400">Risk guard</div>
+                    <div className="text-sm font-light text-slate-400">
+                      Risk guard
+                    </div>
                     <div className="font-medium text-white">
                       Alert thresholds active
                     </div>
@@ -140,7 +148,7 @@ const HeroSection = () => {
                     <BarChart3 className="h-5 w-5" />
                   </div>
                   <div>
-                    <div className="text-sm text-slate-400">
+                    <div className="text-sm font-light text-slate-400">
                       Portfolio health
                     </div>
                     <div className="font-medium text-white">

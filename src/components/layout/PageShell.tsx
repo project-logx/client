@@ -29,7 +29,7 @@ const PageShell = ({
           <h1 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
             {title}
           </h1>
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
+          <p className="mt-4 max-w-2xl text-lg font-light leading-8 text-slate-300">
             {description}
           </p>
         </div>

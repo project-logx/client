@@ -14,7 +14,7 @@ const WorkflowSection = () => {
           <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
             Designed to keep the signal centered and the interface calm.
           </h2>
-          <p className="mt-4 max-w-xl text-slate-300">
+          <p className="mt-4 max-w-xl font-light text-slate-300">
             A focused experience matters when the market is moving quickly. Logx
             keeps the layout clean, the controls easy to reach, and the analysis
             readable on every screen size.
@@ -29,7 +29,7 @@ const WorkflowSection = () => {
               </div>
               <div>
                 <div className="text-lg font-medium text-white">{step}</div>
-                <div className="mt-1 text-sm leading-6 text-slate-400">
+                <div className="mt-1 text-sm font-light leading-6 text-slate-400">
                   Keep the workflow simple so traders can spend more time
                   evaluating setups and less time decoding the UI.
                 </div>

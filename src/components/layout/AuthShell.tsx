@@ -36,7 +36,7 @@ const AuthShell = ({
           <h1 className="mt-3 max-w-xl text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
             {title}
           </h1>
-          <p className="mt-4 max-w-xl text-lg leading-8 text-slate-300">
+          <p className="mt-4 max-w-xl text-lg font-light leading-8 text-slate-300">
             {description}
           </p>
           <div className="mt-8 hidden max-w-md rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur lg:block">
@@ -46,7 +46,7 @@ const AuthShell = ({
             <div className="mt-3 text-lg font-medium text-white">
               Secure access for your trading workspace.
             </div>
-            <p className="mt-2 text-sm leading-6 text-slate-300">
+            <p className="mt-2 text-sm font-light leading-6 text-slate-300">
               Use one account to enter Logx, then connect your Zerodha Kite
               session for portfolio data and trading actions.
             </p>
@@ -57,7 +57,7 @@ const AuthShell = ({
           <div className="absolute -right-8 top-6 hidden h-28 w-28 rounded-full bg-cyan-400/20 blur-3xl lg:block" />
           <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_30px_120px_rgba(0,0,0,0.35)] backdrop-blur sm:p-8">
             {children}
-            <div className="mt-6 border-t border-white/10 pt-5 text-sm text-slate-400">
+            <div className="mt-6 border-t border-white/10 pt-5 text-sm font-light text-slate-400">
               {footerText}{" "}
               <Link
                 className="font-medium text-emerald-300 transition hover:text-emerald-200"

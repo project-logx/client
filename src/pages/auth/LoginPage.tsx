@@ -25,8 +25,8 @@ const LoginPage = () => {
     >
       <form className="space-y-5" onSubmit={handleSubmit}>
         <label className="block space-y-2">
-          <span className="text-sm font-medium text-slate-300">
-            Email address
+          <span className="text-sm font-medium text-slate-300 uppercase">
+            Email
           </span>
           <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3">
             <CircleUserRound className="h-5 w-5 text-slate-400" />
@@ -42,7 +42,9 @@ const LoginPage = () => {
         </label>
 
         <label className="block space-y-2">
-          <span className="text-sm font-medium text-slate-300">Password</span>
+          <span className="text-sm font-medium text-slate-300 uppercase">
+            Password
+          </span>
           <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3">
             <LockKeyhole className="h-5 w-5 text-slate-400" />
             <input
@@ -56,7 +58,7 @@ const LoginPage = () => {
           </div>
         </label>
 
-        <div className="flex items-center justify-between text-sm text-slate-400">
+        <div className="flex items-center justify-between text-sm font-light text-slate-400">
           <label className="flex items-center gap-2">
             <input className="accent-emerald-400" type="checkbox" />
             Remember me

@@ -13,7 +13,7 @@ const FeaturesSection = () => {
         <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
           Everything you need to analyze, compare, and trade faster.
         </h2>
-        <p className="mt-4 text-slate-300">
+        <p className="mt-4 font-light text-slate-300">
           Logx turns scattered market data into a focused operating system for
           trading teams and solo operators.
         </p>
@@ -34,7 +34,9 @@ const FeaturesSection = () => {
               <h3 className="mt-5 text-xl font-semibold text-white">
                 {feature.title}
               </h3>
-              <p className="mt-3 leading-7 text-slate-300">{feature.text}</p>
+              <p className="mt-3 font-light leading-7 text-slate-300">
+                {feature.text}
+              </p>
             </article>
           );
         })}

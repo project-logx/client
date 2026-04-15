@@ -12,7 +12,9 @@ const Header = () => {
           <div className="text-lg font-semibold tracking-[0.28em] text-white uppercase">
             Logx
           </div>
-          <div className="text-xs text-slate-400">Trading + Analyzer</div>
+          <div className="text-xs font-light text-slate-400">
+            Trading + Analyzer
+          </div>
         </div>
       </div>
 

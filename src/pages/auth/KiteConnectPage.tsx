@@ -22,7 +22,7 @@ const KiteConnectPage = () => {
       footerLinkLabel="Back to sign in"
       footerLinkTo="/login"
     >
-      <div className="mb-5 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-4 text-sm leading-6 text-cyan-100">
+      <div className="mb-5 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-4 text-sm font-light leading-6 text-cyan-100">
         Zerodha Kite authentication is usually handled through a redirect-based
         flow. This screen prepares the handoff, but the secure token exchange
         should happen on a backend.
@@ -30,8 +30,8 @@ const KiteConnectPage = () => {
 
       <form className="space-y-5" onSubmit={handleSubmit}>
         <label className="block space-y-2">
-          <span className="text-sm font-medium text-slate-300">
-            Kite user ID
+          <span className="text-sm font-medium text-slate-300 uppercase">
+            Kite ID
           </span>
           <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3">
             <UserCheck2 className="h-5 w-5 text-slate-400" />
@@ -47,7 +47,9 @@ const KiteConnectPage = () => {
         </label>
 
         <label className="block space-y-2">
-          <span className="text-sm font-medium text-slate-300">API key</span>
+          <span className="text-sm font-medium text-slate-300 uppercase">
+            API key
+          </span>
           <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3">
             <ShieldCheck className="h-5 w-5 text-slate-400" />
             <input
