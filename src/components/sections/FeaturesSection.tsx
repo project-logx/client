@@ -26,9 +26,9 @@ const FeaturesSection = () => {
           return (
             <article
               key={feature.title}
-              className="group rounded-[1.75rem] border border-white/10 bg-white/5 p-6 backdrop-blur transition hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/8"
+              className="group rounded-lg border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/8\"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/10 text-emerald-300 transition group-hover:bg-emerald-400/15">
+              <div className="flex h-12 w-12 items-center justify-center rounded-md bg-emerald-400/10 text-emerald-300 transition group-hover:bg-emerald-400/15\">
                 <Icon className="h-5 w-5" />
               </div>
               <h3 className="mt-5 text-xl font-semibold text-white">

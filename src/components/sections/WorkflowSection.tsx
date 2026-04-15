@@ -21,10 +21,10 @@ const WorkflowSection = () => {
           </p>
         </div>
 
-        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur">
+        <div className="rounded-lg border border-white/10 bg-white/5 p-6">
           {workflow.map((step, index) => (
-            <div key={step} className="flex gap-4 py-4 first:pt-0 last:pb-0">
-              <div className="flex h-10 w-10 flex-none items-center justify-center rounded-2xl bg-white/10 text-sm font-semibold text-white">
+            <div key={step} className="flex gap-4 py-4 first:pt-0 last:pb-0\">
+              <div className="flex h-10 w-10 flex-none items-center justify-center rounded-md bg-white/10 text-sm font-semibold text-white\">
                 0{index + 1}
               </div>
               <div>

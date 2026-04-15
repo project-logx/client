@@ -3,6 +3,7 @@ import { useState } from "react";
 import type { FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthShell from "../../components/layout/AuthShell";
+import { setAuthenticated } from "../../utils/auth";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -11,7 +12,8 @@ const LoginPage = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    navigate("/kite-connect");
+    setAuthenticated(true);
+    navigate("/dashboard");
   };
 
   return (
@@ -28,7 +30,7 @@ const LoginPage = () => {
           <span className="text-sm font-medium text-slate-300 uppercase">
             Email
           </span>
-          <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3">
+          <div className="flex items-center gap-3 rounded-lg border border-white/10 bg-slate-950/50 px-4 py-3">
             <CircleUserRound className="h-5 w-5 text-slate-400" />
             <input
               className="w-full bg-transparent text-white outline-none placeholder:text-slate-500"
@@ -45,7 +47,7 @@ const LoginPage = () => {
           <span className="text-sm font-medium text-slate-300 uppercase">
             Password
           </span>
-          <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3">
+          <div className="flex items-center gap-3 rounded-lg border border-white/10 bg-slate-950/50 px-4 py-3">
             <LockKeyhole className="h-5 w-5 text-slate-400" />
             <input
               className="w-full bg-transparent text-white outline-none placeholder:text-slate-500"
@@ -72,7 +74,7 @@ const LoginPage = () => {
         </div>
 
         <button
-          className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald-400 px-5 py-3.5 font-medium text-slate-950 transition hover:bg-emerald-300"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-400 px-5 py-3.5 font-medium text-slate-950 transition hover:bg-emerald-300"
           type="submit"
         >
           Sign in

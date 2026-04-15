@@ -22,7 +22,7 @@ const KiteConnectPage = () => {
       footerLinkLabel="Back to sign in"
       footerLinkTo="/login"
     >
-      <div className="mb-5 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-4 text-sm font-light leading-6 text-cyan-100">
+      <div className="mb-5 rounded-lg border border-cyan-400/20 bg-cyan-400/10 p-4 text-sm font-light leading-6 text-cyan-100">
         Zerodha Kite authentication is usually handled through a redirect-based
         flow. This screen prepares the handoff, but the secure token exchange
         should happen on a backend.
@@ -33,7 +33,7 @@ const KiteConnectPage = () => {
           <span className="text-sm font-medium text-slate-300 uppercase">
             Kite ID
           </span>
-          <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3">
+          <div className="flex items-center gap-3 rounded-lg border border-white/10 bg-slate-950/50 px-4 py-3">
             <UserCheck2 className="h-5 w-5 text-slate-400" />
             <input
               className="w-full bg-transparent text-white outline-none placeholder:text-slate-500"
@@ -50,7 +50,7 @@ const KiteConnectPage = () => {
           <span className="text-sm font-medium text-slate-300 uppercase">
             API key
           </span>
-          <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3">
+          <div className="flex items-center gap-3 rounded-lg border border-white/10 bg-slate-950/50 px-4 py-3">
             <ShieldCheck className="h-5 w-5 text-slate-400" />
             <input
               className="w-full bg-transparent text-white outline-none placeholder:text-slate-500"
@@ -65,14 +65,14 @@ const KiteConnectPage = () => {
 
         <div className="grid gap-3 sm:grid-cols-2">
           <button
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-400 px-5 py-3.5 font-medium text-slate-950 transition hover:bg-emerald-300"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-400 px-5 py-3.5 font-medium text-slate-950 transition hover:bg-emerald-300"
             type="submit"
           >
             Continue to Kite
             <ArrowRight className="h-4 w-4" />
           </button>
           <Link
-            className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-3.5 font-medium text-white backdrop-blur transition hover:border-emerald-400/40 hover:bg-emerald-400/10"
+            className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 px-5 py-3.5 font-medium text-white transition hover:border-emerald-400/40 hover:bg-emerald-400/10"
             to="/features"
           >
             Review product

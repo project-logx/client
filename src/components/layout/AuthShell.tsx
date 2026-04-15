@@ -39,7 +39,7 @@ const AuthShell = ({
           <p className="mt-4 max-w-xl text-lg font-light leading-8 text-slate-300">
             {description}
           </p>
-          <div className="mt-8 hidden max-w-md rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur lg:block">
+          <div className="mt-8 hidden max-w-md rounded-lg border border-white/10 bg-white/5 p-6 lg:block\">
             <div className="text-sm font-medium uppercase tracking-[0.22em] text-cyan-300">
               Logx account flow
             </div>
@@ -55,7 +55,7 @@ const AuthShell = ({
 
         <div className="relative">
           <div className="absolute -right-8 top-6 hidden h-28 w-28 rounded-full bg-cyan-400/20 blur-3xl lg:block" />
-          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_30px_120px_rgba(0,0,0,0.35)] backdrop-blur sm:p-8">
+          <div className="rounded-lg border border-white/10 bg-white/5 p-6 shadow-[0_30px_120px_rgba(0,0,0,0.35)] sm:p-8\">
             {children}
             <div className="mt-6 border-t border-white/10 pt-5 text-sm font-light text-slate-400">
               {footerText}{" "}
