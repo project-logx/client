@@ -12,19 +12,17 @@ const WorkflowSection = () => {
             Workflow
           </div>
           <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
-            Designed to keep the signal centered and the interface calm.
+            Built around your trading workflow.
           </h2>
           <p className="mt-4 max-w-xl font-light text-slate-300">
-            A focused experience matters when the market is moving quickly. Logx
-            keeps the layout clean, the controls easy to reach, and the analysis
-            readable on every screen size.
+            Tag setups before entry. Log execution in real-time. Analyze performance after close. Logx keeps the process simple so you can focus on the trades that matter.
           </p>
         </div>
 
         <div className="rounded-lg border border-white/10 bg-white/5 p-6">
           {workflow.map((step, index) => (
-            <div key={step} className="flex gap-4 py-4 first:pt-0 last:pb-0\">
-              <div className="flex h-10 w-10 flex-none items-center justify-center rounded-md bg-white/10 text-sm font-semibold text-white\">
+            <div key={step} className="flex gap-4 py-4 first:pt-0 last:pb-0">
+              <div className="flex h-10 w-10 flex-none items-center justify-center rounded-md bg-white/10 text-sm font-semibold text-white">
                 0{index + 1}
               </div>
               <div>

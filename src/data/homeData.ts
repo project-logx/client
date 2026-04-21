@@ -3,6 +3,7 @@ import {
   BarChart3,
   BrainCircuit,
   CandlestickChart,
+  Sparkles,
   ShieldCheck,
 } from "lucide-react";
 
@@ -34,28 +35,33 @@ export const highlights: Highlight[] = [
 export const features: Feature[] = [
   {
     icon: CandlestickChart,
-    title: "Trading cockpit",
-    text: "Scan momentum, candles, and order flow in one responsive view built for fast decisions.",
-  },
-  {
-    icon: BrainCircuit,
-    title: "AI analyzer",
-    text: "Combine pattern recognition, sentiment, and historical context to rank opportunities instantly.",
+    title: "Contextual Logging",
+    text: "Document your emotional state at entry, mid-trade, and exit.",
   },
   {
     icon: BarChart3,
-    title: "Performance board",
-    text: "Track win rate, drawdown, volatility, and portfolio drift with clear visual summaries.",
+    title: "Behavioral Analytics",
+    text: "Correlation between P&L and emotional stability.",
+  },
+  {
+    icon: BrainCircuit,
+    title: "Smart Coaching",
+    text: "Identification of tilt patterns and automated interventions.",
   },
   {
     icon: ShieldCheck,
-    title: "Risk controls",
-    text: "Set thresholds, protect capital, and get alerted before small issues turn into large losses.",
+    title: "Narrative-Driven UI",
+    text: "High-end, professional trading environment with zero distraction.",
+  },
+  {
+    icon: Sparkles,
+    title: "Interactive Tour",
+    text: "Onboarding experience to get you started in seconds.",
   },
 ];
 
 export const workflow = [
-  "Connect your markets and watchlists",
-  "Let Logx score opportunities in real time",
-  "Act on insights with confidence and discipline",
+  "Sync trades directly from your brokerage account",
+  "Behavioral Analytics",
+  "Real-Time Coaching",
 ];
