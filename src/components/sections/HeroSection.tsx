@@ -9,9 +9,8 @@ const HeroSection = () => {
   return (
     <section className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-5 pb-10 pt-6 text-center sm:px-8 lg:px-10 lg:pb-20 lg:pt-6">
       <h1 className="max-w-4xl text-5xl font-light leading-[0.95] tracking-[-0.05em] mt-10 text-white sm:text-6xl lg:text-7xl">
-        Where Market
-        <span className="block">Data Meets</span>
-        <span className="block text-slate-300">The Mind</span>
+        Where Market Data,
+        <span className="block text-slate-300"> Meets The Mind</span>
       </h1>
 
       <p className="mt-6 max-w-3xl text-base font-light leading-8 text-slate-300 sm:text-lg">
