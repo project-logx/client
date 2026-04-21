@@ -21,7 +21,7 @@ const FeaturesSection = () => {
 
       {/* Features Grid - 4 Columns */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {features.slice(0, 4).map((feature, index) => {
+        {features.slice(0, 4).map((feature) => {
           const Icon = feature.icon;
 
           return (
