@@ -4,16 +4,48 @@ import type { FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthShell from "../../components/layout/AuthShell";
 import { setAuthenticated } from "../../utils/auth";
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [accessToken, setAccessToken] = useState("");
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setAuthenticated(true);
-    navigate("/dashboard");
+    const payload ={
+      email,password
+    }
+    if (!email || !password) {
+      console.error("Email and password are required");
+      return;
+    }
+    
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/v1/auth/login`, {
+        method:"POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        const errorPayload = await response.json().catch(() => null);
+        const detail =
+          errorPayload && typeof errorPayload.detail === "string"
+            ? errorPayload.detail
+            : "Login failed";
+        throw new Error(detail);
+      }
+
+      const data = await response.json();
+      setAccessToken(data.access_token);
+      setAuthenticated(true);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
   };
 
   return (
@@ -67,7 +99,7 @@ const LoginPage = () => {
           </label>
           <Link
             className="text-emerald-300 transition hover:text-emerald-200"
-            to="/signup"
+            to="/forgot-password"
           >
             Forgot password?
           </Link>
