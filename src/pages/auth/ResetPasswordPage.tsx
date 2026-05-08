@@ -39,7 +39,7 @@ const ResetPasswordPage = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ new_password: password }),
+          body: JSON.stringify({ token:token,new_password: password }),
         },
       );
 
