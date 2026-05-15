@@ -8,6 +8,7 @@ import {
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { Link } from "react-router-dom";
+import GoogleAuthButton from "../../components/auth/GoogleAuthButton";
 import AuthShell from "../../components/layout/AuthShell";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
 const SignupPage = () => {
@@ -79,7 +80,14 @@ const SignupPage = () => {
           </Link>
         </div>
       ) : (
-        <form className="space-y-5" onSubmit={handleSubmit}>
+        <div className="space-y-5">
+          <GoogleAuthButton label="Sign up with Google" />
+          <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
+            <span className="h-px flex-1 bg-white/10" />
+            Or create with email
+            <span className="h-px flex-1 bg-white/10" />
+          </div>
+          <form className="space-y-5" onSubmit={handleSubmit}>
         <label className="block space-y-2">
           <span className="text-sm font-medium text-slate-300 uppercase">
             First name
@@ -171,6 +179,7 @@ const SignupPage = () => {
           <ArrowRight className="h-4 w-4" />
         </button>
       </form>
+        </div>
       )}
     </AuthShell>
   );

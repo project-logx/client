@@ -2,6 +2,7 @@ import { ArrowRight, CircleUserRound, LockKeyhole } from "lucide-react";
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import GoogleAuthButton from "../../components/auth/GoogleAuthButton";
 import AuthShell from "../../components/layout/AuthShell";
 import { setAuthenticated } from "../../utils/auth";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
@@ -9,7 +10,6 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [accessToken, setAccessToken] = useState("");
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -39,8 +39,7 @@ const LoginPage = () => {
         throw new Error(detail);
       }
 
-      const data = await response.json();
-      setAccessToken(data.access_token);
+      await response.json();
       setAuthenticated(true);
       navigate("/dashboard");
     } catch (error) {
@@ -57,6 +56,15 @@ const LoginPage = () => {
       footerLinkLabel="Create an account"
       footerLinkTo="/signup"
     >
+      <div className="mb-5 space-y-5">
+        <GoogleAuthButton label="Sign in with Google" />
+        <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
+          <span className="h-px flex-1 bg-white/10" />
+          Or sign in with email
+          <span className="h-px flex-1 bg-white/10" />
+        </div>
+      </div>
+
       <form className="space-y-5" onSubmit={handleSubmit}>
         <label className="block space-y-2">
           <span className="text-sm font-medium text-slate-300 uppercase">
