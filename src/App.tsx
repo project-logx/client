@@ -3,7 +3,6 @@ import FeaturesPage from "./pages/marketing/FeaturesPage";
 import HomePage from "./pages/marketing/HomePage";
 import InsightsPage from "./pages/marketing/InsightsPage";
 import WorkflowPage from "./pages/marketing/WorkflowPage";
-import KiteConnectPage from "./pages/auth/KiteConnectPage";
 import LoginPage from "./pages/auth/LoginPage";
 import SignupPage from "./pages/auth/SignupPage";
 import VerifyEmailPage from "./pages/auth/VerifyEmailPage";
@@ -24,7 +23,6 @@ const App = () => {
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/reset-password" element={<ResetPasswordPage />} />
       <Route path="/verify" element={<VerifyEmailPage />} />
-      <Route path="/kite-connect" element={<KiteConnectPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/home" element={<Navigate to="/" replace />} />
       <Route path="*" element={<NotFoundPage />} />
