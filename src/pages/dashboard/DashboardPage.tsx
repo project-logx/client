@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AlertCircle, User as UserIcon, TrendingUp, ClipboardList } from "lucide-react";
 import Header from "../../components/layout/Header";
-import { isAuthenticated } from "../../utils/auth";
+import { isAuthenticated, getToken, saveToken } from "../../utils/auth";
 
 // Import modular dashboard sub-components
 import DashboardHeader from "./components/DashboardHeader";
@@ -13,6 +13,18 @@ import TradesTab from "./components/TradesTab";
 import OrdersTab from "./components/OrdersTab";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+
+/** Build headers with the JWT Bearer token (if available). */
+const authHeaders = (): HeadersInit => {
+  const token = getToken();
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+  return headers;
+};
 
 const DashboardPage = () => {
   const signedIn = isAuthenticated();
@@ -34,7 +46,8 @@ const DashboardPage = () => {
     
     setErrorMsg(null);
     try {
-      const statusRes = await fetch(`${API_BASE_URL}/api/v1/kite_connect/status`);
+      const headers = authHeaders();
+      const statusRes = await fetch(`${API_BASE_URL}/api/v1/kite_connect/status`, { headers });
       if (!statusRes.ok) {
         throw new Error("Failed to check Kite session status");
       }
@@ -44,9 +57,9 @@ const DashboardPage = () => {
         setIsConnected(true);
         // Fetch profile, trades, orders in parallel
         const [profileRes, tradesRes, ordersRes] = await Promise.all([
-          fetch(`${API_BASE_URL}/api/v1/kite_connect/profile`),
-          fetch(`${API_BASE_URL}/api/v1/kite_connect/trades`),
-          fetch(`${API_BASE_URL}/api/v1/kite_connect/orders`)
+          fetch(`${API_BASE_URL}/api/v1/kite_connect/profile`, { headers }),
+          fetch(`${API_BASE_URL}/api/v1/kite_connect/trades`, { headers }),
+          fetch(`${API_BASE_URL}/api/v1/kite_connect/orders`, { headers })
         ]);
         
         if (profileRes.ok) {
@@ -77,6 +90,18 @@ const DashboardPage = () => {
   useEffect(() => {
     // Check URL parameters for status messages
     const params = new URLSearchParams(window.location.search);
+
+    // Capture JWT token from Google OAuth redirect (e.g. /dashboard?token=...)
+    const tokenParam = params.get("token");
+    if (tokenParam) {
+      saveToken(tokenParam);
+      // Clean the token from the URL so it isn't leaked in browser history / referrer
+      params.delete("token");
+      const cleanSearch = params.toString();
+      const cleanUrl = window.location.pathname + (cleanSearch ? `?${cleanSearch}` : "");
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
+
     if (params.get("kite_connected") === "true") {
       setIsConnected(true);
       window.history.replaceState({}, document.title, window.location.pathname);
@@ -90,7 +115,7 @@ const DashboardPage = () => {
 
   const loginWithKiteConnect = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v1/kite_connect/`);
+      const response = await fetch(`${API_BASE_URL}/api/v1/kite_connect/`, { headers: authHeaders() });
       const data = await response.json();
       if (data.redirect_url) {
         window.location.href = data.redirect_url;
@@ -106,7 +131,8 @@ const DashboardPage = () => {
   const disconnectKite = async () => {
     try {
       const response = await fetch(`${API_BASE_URL}/api/v1/kite_connect/disconnect`, {
-        method: "POST"
+        method: "POST",
+        headers: authHeaders(),
       });
       if (response.ok) {
         setIsConnected(false);

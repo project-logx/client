@@ -4,7 +4,7 @@ import type { FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleAuthButton from "../../components/auth/GoogleAuthButton";
 import AuthShell from "../../components/layout/AuthShell";
-import { setAuthenticated } from "../../utils/auth";
+import { saveToken } from "../../utils/auth";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -39,8 +39,10 @@ const LoginPage = () => {
         throw new Error(detail);
       }
 
-      await response.json();
-      setAuthenticated(true);
+      const data = await response.json();
+      if (data.access_token) {
+        saveToken(data.access_token);
+      }
       navigate("/dashboard");
     } catch (error) {
       console.error("Error during login:", error);

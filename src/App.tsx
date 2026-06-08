@@ -9,7 +9,9 @@ import VerifyEmailPage from "./pages/auth/VerifyEmailPage";
 import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/auth/ResetPasswordPage";
 import DashboardPage from "./pages/dashboard/DashboardPage";
+import JournalPage from "./pages/journal/JournalPage";
 import NotFoundPage from "./pages/errors/NotFoundPage";
+import JournalQueuePage from "./pages/journal/JournalQueuePage";
 
 const App = () => {
   return (
@@ -24,6 +26,8 @@ const App = () => {
       <Route path="/reset-password" element={<ResetPasswordPage />} />
       <Route path="/verify" element={<VerifyEmailPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
+      <Route path="/journal" element={<JournalPage />} />
+      <Route path="/pending" element={<JournalQueuePage />} />
       <Route path="/home" element={<Navigate to="/" replace />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

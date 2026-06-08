@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Search } from "lucide-react";
+import { Search, BookOpen } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface Trade {
   trade_id: string;
@@ -9,6 +10,7 @@ interface Trade {
   transaction_type: "BUY" | "SELL";
   quantity: number;
   average_price: string | number;
+  product?: string;
 }
 
 interface TradesTabProps {
@@ -17,6 +19,7 @@ interface TradesTabProps {
 
 const TradesTab = ({ trades }: TradesTabProps) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   const filteredTrades = trades.filter((t) =>
     t.tradingsymbol?.toLowerCase().includes(searchQuery.toLowerCase())
@@ -81,8 +84,8 @@ const TradesTab = ({ trades }: TradesTabProps) => {
                   </tr>
                 ))
               ) : (
-                <tr>
-                  <td colSpan={6} className="px-6 py-12 text-center text-slate-500 font-light">
+                <tr>  
+                  <td colSpan={7} className="px-6 py-12 text-center text-slate-500 font-light">
                     {searchQuery ? "No trades match search criteria." : "No trades recorded for this session."}
                   </td>
                 </tr>
@@ -91,6 +94,20 @@ const TradesTab = ({ trades }: TradesTabProps) => {
           </table>
         </div>
       </div>
+      
+      {/* Start Journal Button - Only show when trades exist */}
+      {trades.length > 0 && (
+        <motion.button
+          type="button"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          onClick={() => navigate("/pending")}
+          className="inline-flex items-center gap-2 mt-6 px-4 py-2.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-sm font-semibold text-emerald-400 transition hover:bg-emerald-500/20 hover:border-emerald-500/50 hover:shadow-[0_6px_20px_rgba(16,185,129,0.18)]"
+        >
+          <BookOpen size={16} />
+          Start Journal for Latest Trade
+        </motion.button>
+      )}
     </motion.div>
   );
 };
