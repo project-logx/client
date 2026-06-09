@@ -26,7 +26,13 @@ const authHeaders = (): HeadersInit => {
   return headers;
 };
 
-const DashboardPage = () => {
+type DashboardTab = "profile" | "trades" | "orders";
+
+type DashboardPageProps = {
+  defaultTab?: DashboardTab;
+};
+
+const DashboardPage = ({ defaultTab = "profile" }: DashboardPageProps) => {
   const signedIn = isAuthenticated();
   
   // Connection and data states
@@ -34,7 +40,7 @@ const DashboardPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"profile" | "trades" | "orders">( "profile");
+  const [activeTab, setActiveTab] = useState<DashboardTab>(defaultTab);
   
   const [profile, setProfile] = useState<any>(null);
   const [trades, setTrades] = useState<any[]>([]);

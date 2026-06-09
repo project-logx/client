@@ -2,7 +2,26 @@
  * Journal API utilities for fetching and managing node data
  */
 
+import type { ExistingAttachment } from "../pages/journal/constants";
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+
+const resolveAttachmentUrl = (url: string) =>
+  url.startsWith("http") ? url : `${API_BASE_URL.replace(/\/$/, "")}${url}`;
+
+const mapApiAttachment = (raw: {
+  id: number;
+  file_name: string;
+  mime_type: string;
+  size_bytes: number;
+  url: string;
+}): ExistingAttachment => ({
+  id: raw.id,
+  file_name: raw.file_name,
+  mime_type: raw.mime_type,
+  size_bytes: raw.size_bytes,
+  url: resolveAttachmentUrl(raw.url),
+});
 
 const getToken = (): string | null => {
   return localStorage.getItem("authToken");
@@ -31,6 +50,7 @@ export interface MidNodeContext {
   fixedTags: Record<string, string>;
   sliders: Record<string, number>;
   note: string;
+  existingAttachments: ExistingAttachment[];
 }
 
 const emptyMidNodeContext = (trade: ApiTrade): MidNodeContext => ({
@@ -48,6 +68,7 @@ const emptyMidNodeContext = (trade: ApiTrade): MidNodeContext => ({
     Patience: 5,
   },
   note: "",
+  existingAttachments: [],
 });
 
 /**
@@ -77,6 +98,7 @@ export async function fetchMidNodeContext(tradeId: string): Promise<MidNodeConte
       fixedTags: prefill.fixed_tags || {},
       sliders: prefill.sliders || emptyMidNodeContext(trade).sliders,
       note: prefill.note || "",
+      existingAttachments: (prefill.attachments || []).map(mapApiAttachment),
     };
   } catch (err) {
     console.error("Error fetching mid node context:", err);

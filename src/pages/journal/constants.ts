@@ -14,11 +14,32 @@ export interface Trade {
 
 export type NodeType = "entry" | "mid" | "exit";
 
+export interface ExistingAttachment {
+  id: number;
+  file_name: string;
+  mime_type: string;
+  size_bytes: number;
+  url: string;
+}
+
+export interface JournalPrefillData {
+  fixedTags: Record<string, string>;
+  sliders: Record<string, number>;
+  note: string;
+  existingAttachments: ExistingAttachment[];
+}
+
 export interface NodeFormState {
   tags: Record<string, string>;
   sliders: Record<string, number>;
   note: string;
+  attachments: File[];
+  existingAttachments: ExistingAttachment[];
 }
+
+export const MAX_ATTACHMENTS_PER_NODE = 10;
+export const MAX_ATTACHMENT_SIZE_BYTES = 10 * 1024 * 1024;
+export const ALLOWED_ATTACHMENT_MIME_TYPES = ["image/png", "image/jpeg", "image/webp"] as const;
 
 // ─── Fixed tag data (mirrors backend constants.py) ──────────────────────────
 

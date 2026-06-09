@@ -3,10 +3,11 @@ import { ChevronRight } from "lucide-react";
 
 import type { NodeType } from "../constants";
 
-interface JournalSubmitValue{
+interface JournalSubmitValue {
   fixedTags: Record<string, string>;
   sliders: Record<string, number>;
-  note: string
+  note: string;
+  attachments: File[];
 }
 
 interface JournalSubmitRowProps {
@@ -46,6 +47,10 @@ const submitJournalNode = async (tradeId: string, nodeType: NodeType, journalDat
   formData.append("patience", String(journalData.sliders.Patience ?? 5));
   formData.append("note", journalData.note);
   formData.append("confirm_intervention", "false");
+
+  for (const file of journalData.attachments) {
+    formData.append("files", file);
+  }
 
   const nodePath = nodeType === "mid" ? "mid" : `nodes/${route}`;
   const response = await fetch(`${API_BASE_URL}/api/v1/trades/${tradeId}/${nodePath}`, {

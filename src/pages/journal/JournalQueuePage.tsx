@@ -297,6 +297,7 @@ const JournalQueuePage = () => {
             fixedTags: midContext.fixedTags,
             sliders: midContext.sliders,
             note: midContext.note,
+            existingAttachments: midContext.existingAttachments,
           }
         } 
       });

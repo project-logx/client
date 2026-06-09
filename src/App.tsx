@@ -12,6 +12,9 @@ import DashboardPage from "./pages/dashboard/DashboardPage";
 import JournalPage from "./pages/journal/JournalPage";
 import NotFoundPage from "./pages/errors/NotFoundPage";
 import JournalQueuePage from "./pages/journal/JournalQueuePage";
+import JourneysPage from "./pages/journeys/JourneysPage";
+import JourneyDetailPage from "./pages/journeys/JourneyDetailPage";
+import AnalysisPage from "./pages/analysis/AnalysisPage";
 
 const App = () => {
   return (
@@ -26,6 +29,10 @@ const App = () => {
       <Route path="/reset-password" element={<ResetPasswordPage />} />
       <Route path="/verify" element={<VerifyEmailPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
+      <Route path="/profile" element={<DashboardPage defaultTab="profile" />} />
+      <Route path="/journeys" element={<JourneysPage />} />
+      <Route path="/journeys/:journeyId" element={<JourneyDetailPage />} />
+      <Route path="/analysis" element={<AnalysisPage />} />
       <Route path="/journal" element={<JournalPage />} />
       <Route path="/pending" element={<JournalQueuePage />} />
       <Route path="/home" element={<Navigate to="/" replace />} />

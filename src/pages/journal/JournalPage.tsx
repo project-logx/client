@@ -50,10 +50,26 @@ const JournalPage = () => {
   const [submitted, setSubmitted] = useState(false);
 
   // Per-node form state with optional prefilling for mid-node
+  const emptyNodeForm = (nodeType: NodeType): NodeFormState => ({
+    tags: defaultTags(nodeType),
+    sliders: defaultSliders(),
+    note: "",
+    attachments: [],
+    existingAttachments: [],
+  });
+
   const [formState, setFormState] = useState<Record<NodeType, NodeFormState>>({
-    entry: { tags: defaultTags("entry"), sliders: defaultSliders(), note: "" },
-    mid:   prefillData ? { tags: prefillData.fixedTags, sliders: prefillData.sliders, note: prefillData.note } : { tags: defaultTags("mid"), sliders: defaultSliders(), note: "" },
-    exit:  { tags: defaultTags("exit"),  sliders: defaultSliders(), note: "" },
+    entry: emptyNodeForm("entry"),
+    mid: prefillData
+      ? {
+          tags: prefillData.fixedTags,
+          sliders: prefillData.sliders,
+          note: prefillData.note,
+          attachments: [],
+          existingAttachments: prefillData.existingAttachments ?? [],
+        }
+      : emptyNodeForm("mid"),
+    exit: emptyNodeForm("exit"),
   });
 
   const stepIndex = steps.findIndex((s) => s.type === currentStep);
@@ -90,10 +106,18 @@ const JournalPage = () => {
     }));
   };
 
+  const setAttachments = (attachments: File[]) => {
+    setFormState((prev) => ({
+      ...prev,
+      [currentStep]: { ...prev[currentStep], attachments },
+    }));
+  };
+
   const journalData = {
     fixedTags: nodeForm.tags,
     sliders: nodeForm.sliders,
     note: nodeForm.note,
+    attachments: nodeForm.attachments,
   };
 
   const handleSubmitNode = () => {
@@ -189,6 +213,10 @@ const JournalPage = () => {
               <JournalNoteSection
                 note={nodeForm.note}
                 onNoteChange={setNote}
+                attachments={nodeForm.attachments}
+                onAttachmentsChange={setAttachments}
+                existingAttachments={nodeForm.existingAttachments}
+                existingAttachmentsLabel={journalMode === "mid" ? "From entry" : undefined}
               />
 
               {/* Submit */}
