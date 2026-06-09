@@ -10,7 +10,7 @@ import type { FormEvent } from "react";
 import { Link } from "react-router-dom";
 import GoogleAuthButton from "../../components/auth/GoogleAuthButton";
 import AuthShell from "../../components/layout/AuthShell";
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const SignupPage = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

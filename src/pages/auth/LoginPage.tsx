@@ -5,11 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import GoogleAuthButton from "../../components/auth/GoogleAuthButton";
 import AuthShell from "../../components/layout/AuthShell";
 import { saveToken } from "../../utils/auth";
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  console.log(API_BASE_URL);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
