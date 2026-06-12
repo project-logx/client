@@ -8,6 +8,7 @@ import SignupPage from "./pages/auth/SignupPage";
 import VerifyEmailPage from "./pages/auth/VerifyEmailPage";
 import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/auth/ResetPasswordPage";
+import LogoutPage from "./pages/auth/LogoutPage";
 import DashboardPage from "./pages/dashboard/DashboardPage";
 import JournalPage from "./pages/journal/JournalPage";
 import NotFoundPage from "./pages/errors/NotFoundPage";
@@ -35,6 +36,7 @@ const App = () => {
       <Route path="/analysis" element={<AnalysisPage />} />
       <Route path="/journal" element={<JournalPage />} />
       <Route path="/pending" element={<JournalQueuePage />} />
+      <Route path="/logout" element={<LogoutPage />} />
       <Route path="/home" element={<Navigate to="/" replace />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

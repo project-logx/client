@@ -1,3 +1,4 @@
+import { div } from "framer-motion/client";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
@@ -88,7 +89,14 @@ const Header = ({ showAuthActions = true }: HeaderProps) => {
           </Link>
         </div>
       ) : (
-        <div className="w-[88px] sm:w-[120px]" aria-hidden />
+        <div>
+          <Link
+            className="hidden rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm text-white transition hover:border-emerald-400/40 hover:bg-emerald-400/10 sm:inline-flex"
+            to="/logout"
+          >
+            Logout
+          </Link>
+        </div>
       )}
     </header>
   );
