@@ -1,4 +1,3 @@
-import { div } from "framer-motion/client";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
