@@ -24,7 +24,7 @@ const mapApiAttachment = (raw: {
 });
 
 const getToken = (): string | null => {
-  return localStorage.getItem("authToken");
+  return localStorage.getItem("logx_token");
 };
 
 const authHeaders = (): HeadersInit => {
