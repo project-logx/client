@@ -18,14 +18,14 @@ const DashboardHeader = ({
   onDisconnect
 }: DashboardHeaderProps) => {
   return (
-    <div className="flex flex-col gap-6 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md md:flex-row md:items-center md:justify-between">
+    <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6 backdrop-blur-md md:flex-row md:items-center md:justify-between">
       <div className="flex items-center gap-4">
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-emerald-400/20 bg-emerald-400/10 shadow-inner text-emerald-300">
-          <UserIcon className="h-7 w-7" />
+        <div className="flex h-10 w-10 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-xl border border-emerald-400/20 bg-emerald-400/10 shadow-inner text-emerald-300">
+          <UserIcon className="h-5 w-5 sm:h-7 sm:w-7" />
         </div>
         <div>
           <div className="flex items-center gap-2.5">
-            <h2 className="text-xl font-semibold text-white">
+            <h2 className="text-base sm:text-xl font-semibold text-white">
               {userName || "Connected Trader"}
             </h2>
             <span className="relative flex h-2 w-2">
@@ -36,14 +36,14 @@ const DashboardHeader = ({
               Live
             </span>
           </div>
-          <p className="text-xs font-light text-slate-400 mt-0.5">
+          <p className="text-[10px] sm:text-xs font-light text-slate-400 mt-0.5 truncate max-w-[200px] sm:max-w-none">
             Client ID: <span className="font-semibold text-slate-300">{userId || "N/A"}</span> • {email || "N/A"}
           </p>
         </div>
       </div>
 
       {/* Action Buttons */}
-      <div className="flex flex-wrap gap-3">
+      <div className="flex gap-2 sm:gap-3">
         <button
           onClick={onRefresh}
           disabled={isRefreshing}

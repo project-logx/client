@@ -35,7 +35,7 @@ const OrdersTab = ({ orders }: OrdersTabProps) => {
       className="space-y-4"
     >
       {/* Search bar */}
-      <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 max-w-md">
+      <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 w-full sm:max-w-md">
         <Search className="h-4 w-4 text-slate-400" />
         <input
           type="text"
@@ -52,27 +52,27 @@ const OrdersTab = ({ orders }: OrdersTabProps) => {
           <table className="w-full text-left text-sm">
             <thead className="bg-white/5 border-b border-white/10 text-xs font-semibold uppercase tracking-wider text-slate-400">
               <tr>
-                <th className="px-6 py-4">Order ID</th>
-                <th className="px-6 py-4">Timestamp</th>
-                <th className="px-6 py-4">Symbol</th>
-                <th className="px-6 py-4">Action</th>
-                <th className="px-6 py-4">Type</th>
-                <th className="px-6 py-4 text-right">Qty (Filled / Total)</th>
-                <th className="px-6 py-4 text-right">Avg. Price</th>
-                <th className="px-6 py-4 text-center">Status</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-4">Order ID</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-4 hidden sm:table-cell">Timestamp</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-4">Symbol</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-4">Action</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-4 hidden md:table-cell">Type</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-4 text-right">Qty</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-4 text-right hidden sm:table-cell">Avg. Price</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-4 text-center">Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5 font-light">
               {filteredOrders.length > 0 ? (
                 filteredOrders.map((o) => (
                   <tr key={o.order_id} className="hover:bg-white/5 transition">
-                    <td className="px-6 py-4 font-mono text-xs text-slate-400">{o.order_id}</td>
-                    <td className="px-6 py-4 text-xs text-slate-300">
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 font-mono text-xs text-slate-400">{o.order_id}</td>
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 text-xs text-slate-300 hidden sm:table-cell">
                       {o.order_timestamp ? new Date(o.order_timestamp).toLocaleString() : "N/A"}
                     </td>
-                    <td className="px-6 py-4 font-semibold text-white">{o.tradingsymbol}</td>
-                    <td className="px-6 py-4">
-                      <span className={`inline-flex rounded-lg px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider border ${
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 font-semibold text-white text-xs sm:text-sm">{o.tradingsymbol}</td>
+                    <td className="px-3 sm:px-6 py-3 sm:py-4">
+                      <span className={`inline-flex rounded-lg px-2 sm:px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider border ${
                         o.transaction_type === "BUY"
                           ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
                           : "bg-rose-500/10 text-rose-400 border-rose-500/20"
@@ -80,15 +80,15 @@ const OrdersTab = ({ orders }: OrdersTabProps) => {
                         {o.transaction_type}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-xs font-medium text-slate-400">{o.order_type}</td>
-                    <td className="px-6 py-4 text-right font-semibold text-slate-200">
-                      {o.filled_quantity} / {o.quantity}
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 text-xs font-medium text-slate-400 hidden md:table-cell">{o.order_type}</td>
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 text-right font-semibold text-slate-200 text-xs sm:text-sm">
+                      {o.filled_quantity}/{o.quantity}
                     </td>
-                    <td className="px-6 py-4 text-right font-semibold text-emerald-400 font-mono">
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 text-right font-semibold text-emerald-400 font-mono text-xs sm:text-sm hidden sm:table-cell">
                       ₹{parseFloat(String(o.average_price || o.price || 0)).toFixed(2)}
                     </td>
-                    <td className="px-6 py-4 text-center">
-                      <span className={`inline-flex rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider border ${
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 text-center">
+                      <span className={`inline-flex rounded-full px-2 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider border ${
                         o.status === "COMPLETE"
                           ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
                           : o.status === "REJECTED"

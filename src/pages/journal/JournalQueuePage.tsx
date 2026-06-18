@@ -349,7 +349,7 @@ const JournalQueuePage = () => {
 
       <Header showAuthActions={!signedIn} />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-20 pt-6 sm:px-8 lg:px-10">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-20 pt-4 sm:px-6 md:px-8 lg:px-10">
 
         {/* Error banner */}
         <AnimatePresence>
@@ -390,7 +390,7 @@ const JournalQueuePage = () => {
             className="space-y-8"
           >
             {/* Page Header */}
-            <div className="flex flex-col gap-6 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6 backdrop-blur-md md:flex-row md:items-center md:justify-between">
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => navigate("/dashboard")}
@@ -400,14 +400,14 @@ const JournalQueuePage = () => {
                 </button>
                 <div>
                   <div className="flex items-center gap-2.5">
-                    <h1 className="text-xl font-semibold text-white font-[var(--font-display)]">
+                    <h1 className="text-lg sm:text-xl font-semibold text-white font-[var(--font-display)]">
                       Journal Queue
                     </h1>
                     <span className="rounded-full bg-amber-500/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-400 border border-amber-500/20">
                       {pendingEntry.length + pendingExit.length} pending
                     </span>
                   </div>
-                  <p className="text-xs font-light text-slate-400 mt-0.5">
+                  <p className="text-xs font-light text-slate-400 mt-0.5 hidden sm:block">
                     Trades awaiting your journal entry or exit reflection
                   </p>
                 </div>
@@ -423,33 +423,33 @@ const JournalQueuePage = () => {
             </div>
 
             {/* Metrics summary cards */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-4">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
-                <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Pending Entry</div>
-                <div className="text-3xl font-bold text-emerald-400">{pendingEntry.filter((t) => !completedEntries.has(t.id)).length}</div>
-                <div className="text-xs text-slate-500 mt-1 font-light">BUY trades needing entry journal</div>
+                <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1 sm:mb-2">Pending Entry</div>
+                <div className="text-2xl sm:text-3xl font-bold text-emerald-400">{pendingEntry.filter((t) => !completedEntries.has(t.id)).length}</div>
+                <div className="text-[10px] sm:text-xs text-slate-500 mt-1 font-light">BUY trades needing entry journal</div>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
-                <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Active (Mid Node)</div>
-                <div className="text-3xl font-bold text-sky-400">{activeTrades.length}</div>
-                <div className="text-xs text-slate-500 mt-1 font-light">Trades in active mid-node tagging</div>
+                <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1 sm:mb-2">Active (Mid Node)</div>
+                <div className="text-2xl sm:text-3xl font-bold text-sky-400">{activeTrades.length}</div>
+                <div className="text-[10px] sm:text-xs text-slate-500 mt-1 font-light">Trades in active mid-node tagging</div>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
-                <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Pending Exit</div>
-                <div className="text-3xl font-bold text-rose-400">{pendingExit.length}</div>
-                <div className="text-xs text-slate-500 mt-1 font-light">SELL trades needing exit journal</div>
+                <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1 sm:mb-2">Pending Exit</div>
+                <div className="text-2xl sm:text-3xl font-bold text-rose-400">{pendingExit.length}</div>
+                <div className="text-[10px] sm:text-xs text-slate-500 mt-1 font-light">SELL trades needing exit journal</div>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
-                <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Total Queue</div>
-                <div className="text-3xl font-bold text-sky-400">{pendingEntry.length + pendingExit.length}</div>
-                <div className="text-xs text-slate-500 mt-1 font-light">Trades waiting for journaling</div>
+                <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1 sm:mb-2">Total Queue</div>
+                <div className="text-2xl sm:text-3xl font-bold text-sky-400">{pendingEntry.length + pendingExit.length}</div>
+                <div className="text-[10px] sm:text-xs text-slate-500 mt-1 font-light">Trades waiting for journaling</div>
               </div>
             </div>
 
             {/* Tabs + Search */}
-            <div className="space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div className="flex border-b border-white/10">
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+                <div className="flex overflow-x-auto border-b border-white/10 -mx-1 px-1" style={{ scrollbarWidth: 'none' }}>
                   {[
                     { id: "entry" as const, label: `Pending Entry (${pendingEntry.filter((t) => !completedEntries.has(t.id)).length})`, icon: TrendingUp },
                     { id: "active" as const, label: `Active - Mid Node (${activeTrades.length})`, icon: CheckCircle2 },
@@ -461,7 +461,7 @@ const JournalQueuePage = () => {
                       <button
                         key={tab.id}
                         onClick={() => setActiveTab(tab.id)}
-                        className={`relative flex items-center gap-2 px-6 py-4 text-sm font-semibold transition-colors border-none bg-transparent cursor-pointer ${
+                        className={`relative flex items-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold transition-colors border-none bg-transparent cursor-pointer whitespace-nowrap ${
                           isActive ? "text-emerald-400" : "text-slate-400 hover:text-slate-200"
                         }`}
                       >
@@ -479,7 +479,7 @@ const JournalQueuePage = () => {
                 </div>
 
                 {/* Search */}
-                <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-slate-950/40 px-4 py-2.5 max-w-xs w-full">
+                <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-slate-950/40 px-4 py-2.5 w-full sm:max-w-xs">
                   <Search className="h-4 w-4 text-slate-400" />
                   <input
                     type="text"

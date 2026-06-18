@@ -162,7 +162,7 @@ const DashboardPage = ({ defaultTab = "profile" }: DashboardPageProps) => {
       <Header showAuthActions={!signedIn} />
 
       {/* Main Content Area */}
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-20 pt-6 sm:px-8 lg:px-10">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-20 pt-4 sm:px-6 md:px-8 lg:px-10">
         
         {/* Error notification banner */}
         <AnimatePresence>
@@ -225,7 +225,7 @@ const DashboardPage = ({ defaultTab = "profile" }: DashboardPageProps) => {
 
             {/* Tabbed view for dashboard items */}
             <div className="space-y-6">
-              <div className="flex border-b border-white/10">
+              <div className="flex overflow-x-auto border-b border-white/10 -mx-1 px-1" style={{ scrollbarWidth: 'none' }}>
                 {[
                   { id: "profile", label: "Broker Profile", icon: UserIcon },
                   { id: "trades", label: `Trades (${trades.length})`, icon: TrendingUp },
@@ -237,7 +237,7 @@ const DashboardPage = ({ defaultTab = "profile" }: DashboardPageProps) => {
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id as any)}
-                      className={`relative flex items-center gap-2 px-6 py-4 text-sm font-semibold transition-colors border-none bg-transparent cursor-pointer ${
+                      className={`relative flex items-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold transition-colors border-none bg-transparent cursor-pointer whitespace-nowrap ${
                         isActive ? "text-emerald-400" : "text-slate-400 hover:text-slate-200"
                       }`}
                     >

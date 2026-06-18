@@ -12,7 +12,7 @@ const DashboardMetrics = ({
   ordersCount
 }: DashboardMetricsProps) => {
   return (
-    <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+    <div className="grid grid-cols-2 gap-3 sm:gap-5 sm:grid-cols-3">
       <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md relative overflow-hidden">
         <div className="absolute -right-6 -bottom-6 text-emerald-400/5">
           <Wallet className="h-28 w-28" />
