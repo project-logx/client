@@ -239,8 +239,11 @@ const JournalQueuePage = () => {
     fetchAllTrades();
     
     // Load completed entry trades from localStorage
-    const completed = JSON.parse(localStorage.getItem("completedEntryTrades") || "[]");
-    setCompletedEntries(new Set(completed));
+    // const completed = JSON.parse(localStorage.getItem("completedEntryTrades") || "[]");
+    if(activeTrades){
+      setCompletedEntries(new Set(activeTrades.map(t=>t.id)))
+    }
+
   }, []);
 
   const handleStartJournal = (trade: PendingTrade) => {
