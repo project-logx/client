@@ -161,7 +161,7 @@ const JournalQueuePage = () => {
 
   const [pendingEntry, setPendingEntry] = useState<PendingTrade[]>([]);
   const [pendingExit, setPendingExit] = useState<PendingTrade[]>([]);
-  const [activeTrades, setActiveTrades] = useState<PendingTrade[]>([]);
+  const [activeTrades, setActiveTrades] = useState<PendingTrade[] | []>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -218,7 +218,26 @@ const JournalQueuePage = () => {
       }
       
       console.log("Parsed active trades:", tradesData);
-      setActiveTrades(tradesData);
+      const tempactiveTrades:PendingTrade[] =[];
+      for (const trade of tradesData) {
+        tempactiveTrades.push({
+        id: trade.id,
+        trade_id: trade.trade_id,
+        symbol: trade.symbol,
+        product: trade.product,
+        direction: trade.direction,
+        quantity: trade.quantity,
+        entry_price: trade.entry_price || null,
+        exit_price: trade.exit_price || null,
+        pnl: trade.pnl || null,
+        status: trade.status,
+        opened_at: trade.opened_at || null,
+        closed_at: trade.closed_at || null,
+        waiting_seconds: trade.waiting_seconds || null,
+        })
+      }
+      setActiveTrades(tempactiveTrades);
+      console.log("tempactiveTrades:", tempactiveTrades);
     } catch (err: any) {
       console.error("Error fetching active trades:", err);
       setErrorMsg("Failed to load active trades. Make sure the backend is running.");
@@ -237,14 +256,15 @@ const JournalQueuePage = () => {
 
   useEffect(() => {
     fetchAllTrades();
-    
-    // Load completed entry trades from localStorage
-    // const completed = JSON.parse(localStorage.getItem("completedEntryTrades") || "[]");
-    if(activeTrades){
-      setCompletedEntries(new Set(activeTrades.map(t=>t.id)))
-    }
-
   }, []);
+
+  // Update completedEntries whenever activeTrades changes
+  useEffect(() => {
+    if (activeTrades.length > 0) {
+      setCompletedEntries(new Set(activeTrades.map(t => t.id)));
+      console.log("Completed entries:", activeTrades.map(t => t.id));
+    }
+  }, [activeTrades]);
 
   const handleStartJournal = (trade: PendingTrade) => {
     // Map the DB trade shape to the shape expected by JournalPage
