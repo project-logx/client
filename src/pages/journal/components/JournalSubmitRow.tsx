@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getToken } from "../../../utils/auth";
 import { ChevronRight } from "lucide-react";
 
 import type { NodeType } from "../constants";
@@ -53,8 +54,13 @@ const submitJournalNode = async (tradeId: string, nodeType: NodeType, journalDat
   }
 
   const nodePath = nodeType === "mid" ? "mid" : `nodes/${route}`;
+  const headers: Record<string, string> = {};
+  const token = getToken();
+  if (token) headers["Authorization"] = `Bearer ${token}`;
+
   const response = await fetch(`${API_BASE_URL}/api/v1/trades/${tradeId}/${nodePath}`, {
     method: "POST",
+    headers,
     body: formData,
   });
 
