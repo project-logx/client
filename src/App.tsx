@@ -16,6 +16,7 @@ import JournalQueuePage from "./pages/journal/JournalQueuePage";
 import JourneysPage from "./pages/journeys/JourneysPage";
 import JourneyDetailPage from "./pages/journeys/JourneyDetailPage";
 import AnalysisPage from "./pages/analysis/AnalysisPage";
+import HistoryPage from "./pages/history/HistoryPage";
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
       <Route path="/analysis" element={<AnalysisPage />} />
       <Route path="/journal" element={<JournalPage />} />
       <Route path="/pending" element={<JournalQueuePage />} />
+      <Route path="/history" element={<HistoryPage />} />
       <Route path="/logout" element={<LogoutPage />} />
       <Route path="/home" element={<Navigate to="/" replace />} />
       <Route path="*" element={<NotFoundPage />} />

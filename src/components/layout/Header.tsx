@@ -14,6 +14,7 @@ const APP_ROUTE_PREFIXES = [
   "/profile",
   "/journeys",
   "/analysis",
+  "/history",
 ];
 
 const isAppRoute = (pathname: string) =>
@@ -37,6 +38,7 @@ const marketingLinks = [
 const appLinks = [
   { to: "/dashboard", label: "Dashboard", end: true },
   { to: "/pending", label: "Journalling", end: true },
+  { to: "/history", label: "History", end: true },
   { to: "/profile", label: "Profile", end: true },
   { to: "/journeys", label: "Journey", end: true },
   { to: "/analysis", label: "Analysis", end: true },
