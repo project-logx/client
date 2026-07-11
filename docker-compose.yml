@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  client:
+    image: ${{DOCKER_USERNAME}}/logx-frontend:ci
+    container_name: logx-frontend
+    restart: unless-stopped 
+    ports:
+      - "3000:80"
+    env_file:
+      - ./env
