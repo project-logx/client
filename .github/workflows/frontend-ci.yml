@@ -62,7 +62,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./client/Dockerfile
+          file: ./Dockerfile
           push: true
           tags: ${{secrets.DOCKER_USERNAME}}/logx-frontend:ci
           build-args: |
