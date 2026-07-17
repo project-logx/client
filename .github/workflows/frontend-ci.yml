@@ -83,5 +83,5 @@ jobs:
           script: |
             cd ~/logx/client
             docker compose pull
-            docker compose up -d --force-recreate 
+            docker compose --env-file .env up -d --force-recreate 
             docker image prune -af
