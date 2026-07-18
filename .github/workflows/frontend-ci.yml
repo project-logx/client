@@ -42,7 +42,7 @@ jobs:
 
       - name: Type-check and build
         env:
-          VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
+          VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}
         run: npm run build
 
   docker:
@@ -67,7 +67,13 @@ jobs:
           push: true
           tags: ${{secrets.DOCKER_USERNAME}}/logx-frontend:ci
           build-args: |
-            VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
+            VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}
+
+      - name: Debug API URL
+        run: |
+          echo "VITE_API_BASE_URL=${VITE_API_BASE_URL}" > .env
+          cat .env
+
   deploy:
     name: Deploy Frontend
     runs-on: ubuntu-latest
