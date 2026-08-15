@@ -7,4 +7,4 @@ services:
     restart: unless-stopped
 
     ports:
-      - "127.0.0.1:3000:5173"
+      - "3000:5173"
