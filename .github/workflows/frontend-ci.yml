@@ -87,7 +87,7 @@ jobs:
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
+          password: ${{ secrets.EC2_SSH_PASSWORD }}
           port: 22
           source: "docker-compose.yml"
           target: "~/logx/client/"
@@ -97,7 +97,7 @@ jobs:
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
+          password: ${{ secrets.EC2_SSH_PASSWORD }}
           port: 22
           script: |
             cd ~/logx/client
