@@ -59,7 +59,7 @@ jobs:
           username: ${{secrets.DOCKER_USERNAME}}
           password: ${{secrets.DOCKER_PASSWORD}}
 
-      - name:  Build and Push frontend image
+      - name: Build and Push frontend image
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -81,6 +81,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Create .env file from secret
+        run: echo "${{ secrets.VITE_API_BASE_URL }}" > .env
 
       - name: Copy docker-compose.yml to server
         uses: appleboy/scp-action@v0.1.7
